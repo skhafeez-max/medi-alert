@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medi Alert | Medicine Reminder & Health Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">💊 Medi Alert</a>
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#medicines">Medicines</a>
+            <a href="#health">Health Tracker</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <h1>Your Health, Your Priority!</h1>
+                <p>Manage your medicines and track your health.</p>
+            </div>
+            <div class="date-box" id="currentDate"></div>
+        </section>
+
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <div class="stats">
+                <article class="stat-card">
+                    <span>💊</span>
+                    <h3 id="totalMedicines">0</h3>
+                    <p>Total Medicines</p>
+                </article>
+                <article class="stat-card">
+                    <span>⏰</span>
+                    <h3 id="pendingMedicines">0</h3>
+                    <p>Pending Doses Today</p>
+                </article>
+                <article class="stat-card">
+                    <span>✅</span>
+                    <h3 id="takenMedicines">0</h3>
+                    <p>Doses Taken Today</p>
+                </article>
+                <article class="stat-card">
+                    <span>❤️</span>
+                    <h3 id="totalReadings">0</h3>
+                    <p>Health Readings</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="medicines" class="panel">
+            <h2>Medicine Reminder</h2>
+            <p class="muted">
+                Allow browser notifications and keep this page open for reminders.
+            </p>
+            <button type="button" id="enableNotificationsBtn">
+                Enable Notifications
+            </button>
+            <p id="notificationStatus" role="status"></p>
+
+            <form id="medicineForm" class="form-grid">
+                <div>
+                    <label for="medicineName">Medicine Name</label>
+                    <input id="medicineName" maxlength="100"
+                           placeholder="e.g. Vitamin C" required>
+                </div>
+                <div>
+                    <label for="dosage">Dosage</label>
+                    <input id="dosage" maxlength="80"
+                           placeholder="e.g. 1 tablet" required>
+                </div>
+                <div>
+                    <label for="medicineTime">Daily Reminder Time</label>
+                    <input id="medicineTime" type="time" required>
+                </div>
+                <div>
+                    <label for="medicineStock">Available Quantity</label>
+                    <input id="medicineStock" type="number"
+                           min="1" step="1" required>
+                </div>
+                <div>
+                    <label for="expiryDate">Expiry Date</label>
+                    <input id="expiryDate" type="date" required>
+                </div>
+                <div class="form-button">
+                    <button type="submit">+ Add Medicine</button>
+                </div>
+            </form>
+
+            <h3 class="subheading">My Medicines</h3>
+            <div id="medicineList"></div>
+        </section>
+
+        <section id="health" class="panel">
+            <h2>Health Tracker</h2>
+            <p class="muted">
+                Record your readings for personal tracking, not diagnosis.
+            </p>
+
+            <form id="healthForm" class="form-grid">
+                <div>
+                    <label for="healthType">Reading Type</label>
+                    <select id="healthType" required>
+                        <option value="">Select type</option>
+                        <option>Blood Pressure</option>
+                        <option>Blood Sugar</option>
+                        <option>Weight</option>
+                        <option>Heart Rate</option>
+                        <option>Temperature</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="healthValue">Value and Units</label>
+                    <input id="healthValue" maxlength="100"
+                           placeholder="e.g. 120/80 mmHg" required>
+                </div>
+                <div class="form-button">
+                    <button type="submit">+ Save Reading</button>
+                </div>
+            </form>
+
+            <h3 class="subheading">Health History</h3>
+            <div id="healthList"></div>
+        </section>
+
+        <section class="panel">
+            <h2>Health Alerts</h2>
+            <div id="alerts"></div>
+        </section>
+
+        <section class="panel">
+            <h2>Data Management</h2>
+            <p class="muted">
+                Your records are stored in this browser on this device.
+            </p>
+            <button type="button" id="exportBtn">Export My Data</button>
+            <button type="button" id="importBtn" class="secondary">
+                Import Backup
+            </button>
+            <input type="file" id="importFile" accept=".json"
+                   class="hidden">
+            <button type="button" id="clearBtn" class="danger">
+                Delete All My Data
+            </button>
+            <p id="dataMessage" role="status"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Medi Alert | Smart Medicine Reminder & Health Tracker</p>
+        <p class="disclaimer">
+            Not a replacement for professional medical advice.
+            Do not rely on browser notifications as your only medicine reminder.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
